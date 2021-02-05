@@ -12,6 +12,11 @@ let initialColors;
 
 //EVENT LISTENERS
 generateBtn.addEventListener('click', randomColors);
+lockButton.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    lockColor(index);
+  });
+});
 sliders.forEach(slider => {
   slider.addEventListener("input", hslControls);
 })
@@ -72,7 +77,12 @@ function randomColors() {
     const hexText = div.children[0];
     const randomColor = generateHex();
     //add it to the array
-    initialColors.push(chroma(randomColor).hex());
+    if(div.classList.contains('locked')){
+      initialColors.push(hexText.innerText);
+      return;
+    } else {
+      initialColors.push(chroma(randomColor).hex());
+    }
 
     //Add the color to the bg
     div.style.backgroundColor = randomColor;
@@ -211,6 +221,11 @@ function openAdjustmentPanel(index) {
 }
 function closeAdjustmentPanel(index) {
   sliderContainers[index].classList.remove('active');
+}
+function lockColor(index) {
+  colorDivs[index].classList.toggle('locked');
+  lockButton[index].children[0].classList.toggle('fa-lock-open');
+  lockButton[index].children[0].classList.toggle('fa-lock');
 }
 
 randomColors();
