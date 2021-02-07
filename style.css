@@ -87,7 +87,9 @@ path,i,svg{
   height: 20vh;
 }
 
-.panel button{
+.panel button,
+.close-save,
+.close-library{
   font-size: 1.2rem;
   margin: 1rem;
   padding: 1rem 2rem;
@@ -126,7 +128,9 @@ input[type="range"] {
   cursor: pointer;
 }
 
-.copy-container {
+.copy-container,
+.save-container,
+.library-container {
   position: fixed;
   top: 0%;
   left: 0%;
@@ -140,7 +144,9 @@ input[type="range"] {
   opacity: 0;
   pointer-events: none;
 }
-.copy-popup {
+.copy-popup,
+.save-popup,
+.library-popup {
   background: white;
   display: flex;
   flex-direction: column;
@@ -152,14 +158,77 @@ input[type="range"] {
   min-width: 30%;
   min-height: 30vh;
 }
-.copy-popup h4 {
+.copy-popup h4,
+.save-popup h4,
+.library-popup h4 {
   font-size: 2rem;
   padding: 2rem;
 }
-.copy-container.active{
+.copy-container.active,
+.save-container.active,
+.library-container.active {
   opacity: 1;
   pointer-events: all;
 }
-.copy-popup.active{
+.copy-popup.active,
+.save-container.active,
+.library-container.active {
   transform: translateY(0rem);
+}
+
+.save-name {
+  font-size: 1.5rem;
+  padding: 1rem;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.close-save,
+.close-library {
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  padding: 0.5rem;
+}
+
+.submit-save,
+.pick-palette-btn {
+  margin: 2rem;
+  padding: 1rem;
+  background: rgb(60, 60, 92);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.library-popup {
+  min-width: 40%;
+  padding: 1rem;
+  justify-content: flex-start;
+  overflow-y: scroll;
+  max-height: 50vh;
+}
+
+.custom-palette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 2rem;
+}
+
+.small-preview {
+  display: flex;
+  flex: 1;
+  min-width: 100px;
+}
+
+.custom-palette h4 {
+  flex: 1;
+}
+
+.small-preview div {
+  height: 5rem;
+  flex: 1;
 }
